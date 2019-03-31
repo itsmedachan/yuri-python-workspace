@@ -1,4 +1,5 @@
-In [0]: age = input("How old are you? : ")
+str_age = input("How old are you? : ")
+age = int(str_age)
 
 if age >= 20:
   print("Yay! You are allowed to drink in Japan.")

@@ -1,6 +1,6 @@
 import math
 
-str_n = input("Input your number : ")
+str_n = input("Input N : ")
 n = int(str_n)
 
 sum = 0
