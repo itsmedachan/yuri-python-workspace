@@ -21,13 +21,19 @@ def train_myLinear(n_epoch):
   train_num = len(train)
   test_num = len(test)
   # ---------------------------------------------------------
+  # set batch size
+  batch_size = 100
   for epoch in range(0, n_epoch):
-    for i in range(0, train_num):
+    perm = np.random.permutation(train_num)
+    proceed = 0
+    for i in range(0, len(perm), batch_size):
       # STEP 2 ----------------------------------------------
-      input,target = train[i] # img data(np.float32) for input, label(int) for target
+      input,target = train[perm[i:i+batch_size]] # img data(np.float32) for input, label(int) for target
       # reshape each datum
-      input = input.reshape(1, input.shape[0])
-      target = np.array([target], np.int32)
+      input = input.reshape(input.shape[0], input.shape[1])
+      target = np.array(target, np.int32)
+      # increment
+      proceed += input.shape[0]
       # input to model
       output = my_model(input)
       # -----------------------------------------------------
